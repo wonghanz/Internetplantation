@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plant Health Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F0F8FF;
+    }
+    h1 {
+      color: #228B22;
+      text-align: center;
+    }
+    p {
+      margin: 20px;
+    }
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    a {
+      color: #228B22;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input, select, textarea {
+      margin: 10px;
+    }
+    button {
+      background-color: #228B22;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Plant Health Analysis</h1>
+  <p>Welcome to Plant Health Analysis, a website that helps you diagnose and treat your plants' problems. Whether you have a garden, a farm, or a houseplant, we can help you keep your plants healthy and happy.</p>
+  <img src="plant.jpg" alt="A healthy plant">
+  <p>To get started, click on the button below to upload a picture of your plant and answer some questions. We will analyze your plant and give you a report with the possible causes and solutions for your plant's issues.</p>
+  <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+    <p><label for="image">Select an image of your plant:</label></p>
+    <p><input type="file" id="image" name="image" accept="image/*" required></p>
+    <p><label for="name">What is the name of your plant?</label></p>
+    <p><input type="text" id="name" name="name" placeholder="e.g. Rose, Tomato, Orchid" required></p>
+    <p><label for="type">What type of plant is it?</label></p>
+    <p><select id="type" name="type" required>
+      <option value="">Select one</option>
+      <option value="flower">Flower</option>
+      <option value="fruit">Fruit</option>
+      <option value="vegetable">Vegetable</option>
+      <option value="herb">Herb</option>
+      <option value="indoor">Indoor</option>
+      <option value="outdoor">Outdoor</option>
+      <option value="other">Other</option>
+    </select></p>
+    <p><label for="location">Where do you grow your plant?</label></p>
+    <p><input type="text" id="location" name="location" placeholder="e.g. Balcony, Backyard, Greenhouse" required></p>
+    <p><label for="water">How often do you water your plant?</label></p>
+    <p><input type="text" id="water" name="water" placeholder="e.g. Once a day, Twice a week, When the soil is dry" required></p>
+    <p><label for="sunlight">How much sunlight does your plant get?</label></p>
+    <p><input type="text" id="sunlight" name="sunlight" placeholder="e.g. Full sun, Partial shade, Low light" required></p>
+    <p><label for="fertilizer">Do you use any fertilizer or compost for your plant?</label></p>
+    <p><input type="text" id="fertilizer" name="fertilizer" placeholder="e.g. Yes, No, Sometimes, What kind?" required></p>
+    <p><label for="problem">What is the main problem you have with your plant?</label></p>
+    <p><textarea id="problem" name="problem" rows="4" cols="50" placeholder="e.g. Yellow leaves, Brown spots, Wilting, No flowers or fruits, Pests or diseases" required></textarea></p>
+    <button type="submit">Submit</button>
+  </form>
